@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>WeekendSpot</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/minilogo.png">
+</head>
+<body onload="loadFunctions()">
+    <p id="userOutput" style="display: none;"><%= user %></p>
+    <p id="errorOutput" style="display: none;"><%= error %></p>
+
+    <header id="accountHeader" class="divider">
+        <center><img src="img/logo.png" alt="Logo" onclick="window.location = '/'" class="hover" width="60%"></center>
+    </header>
+
+    <div id="accountMain" style="margin-top: 10px;">
+        <h2 style="height: 20px;">Hi<span id="usernameSpan"></span>! Dein Profil</h2>
+        <hr class="boldHr">
+
+        <table style="width: 100%;" class="profileTable">
+            <tr>
+                <td style="width: 20%;"><img src="img/globe.png" alt="Globus"></td>
+                <td style="width: 70%;">Sprache</td>
+                <td style="width: 10%;" class="arrow">></td>
+            </tr>
+        </table>
+
+        <hr class="boldHr">
+
+        <table style="width: 100%;" class="profileTable" id="accountTable1">
+            <tr>
+                <td style="width: 20%;"><img src="img/profile.png" alt="Profile"></td>
+                <td style="width: 70%;">Profil anpassen</td>
+                <td style="width: 10%;" class="arrow">></td>
+            </tr>
+        </table>
+
+        <hr class="boldHr" id="accountHr1">
+
+        <table style="width: 100%;" class="profileTable">
+            <tr>
+                <td style="width: 20%;"><img src="/img/mail.png" alt="Email"></td>
+                <td style="width: 70%;">Kontakt</td>
+                <td style="width: 10%;" class="arrow">></td>
+            </tr>
+        </table>
+
+        <hr class="boldHr">
+
+        <table style="width: 100%;" class="profileTable">
+            <tr>
+                <td style="width: 20%;"><img src="img/information.png" alt="Email"></td>
+                <td style="width: 70%;">App-Informationen</td>
+                <td style="width: 10%;" class="arrow">></td>
+            </tr>
+        </table>
+
+        <hr class="boldHr" id="accountHr2">
+
+        <table style="width: 100%;" class="profileTable" id="accountTable2">
+            <tr>
+                <td style="width: 20%;"><img src="img/delete.png" alt="Email"></td>
+                <td style="width: 70%;">Konto löschen</td>
+                <td style="width: 10%;" class="arrow">></td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="login" style="display: none;">
+        <div class="content">
+            <span class="close" onclick="closeLogin()">&times;</span>
+            <center><h2 style="margin-top: 15px; margin-left: 10px;">Einloggen</h2></center>
+            <hr style="width: 100%;">
+
+            <h2>Willkommen zurück!</h2>
+            
+            <form method="post" action="/" autocomplete="off">
+                <div class="formInput">
+                    <h4>Username</h4>
+                    <input id="userNameInputLogIn" type="text" name="username">
+                </div>
+                 
+                <div class="formInput">
+                    <h4>Passwort</h4>
+                    <input id="passwordInputLogIn" type="password" name="password">
+                </div>
+
+                <p class="error" id="loginError"></p>
+                
+                <button class="formButton1">Log In</button>
+            </form>
+
+            <p id="forgetPassword">Passwort vergessen?</p>
+
+            <hr style="margin-top: 10px;">
+
+            <h2>Ich bin neu hier</h2>
+            <button class="formButton2" onclick="openRegistration()">Registrieren</button>
+        </div>
+    </div>
+
+    <div id="registration" style="display: none;">
+        <div class="content">
+            <span class="close" onclick="closeRegistration()">&times;</span>
+            <center><h2 style="margin-top: 15px; margin-left: 10px;">Registrieren</h2></center>
+            <hr style="width: 100%;">
+
+            <h2>Herzlich Willkommen!</h2>
+            
+            <form method="post" action="/signIn" autocomplete="off">
+                <div class="formInput">
+                    <h4>Vorname</h4>
+                    <input id="firstnameInput" type="text" name="firstname">
+                </div>
+                 
+                <div class="formInput">
+                    <h4>Nachname</h4>
+                    <input id="lastnameInput" type="text" name="lastname">
+                </div>
+
+                <div class="formInput">
+                    <h4>Username</h4>
+                    <input id="userNameInput" type="text" name="username">
+                </div>
+
+                <div class="formInput">
+                    <h4>E-Mail</h4>
+                    <input id="emailInput" type="email" name="email">
+                </div>
+
+                <div class="formInput">
+                    <h4>Passwort</h4>
+                    <input id="passwordInput" type="password" name="password">
+                </div>
+
+                <p class="error" id="signInError"></p>
+
+                <button class="formButton1">Registrierung abschließen</button>
+            </form>
+
+            <hr style="margin-top: 10px;">
+
+            <h2>Bereits registriert?</h2>
+            <button class="formButton2" onclick="openLogin()">Log-In</button>
+        </div>
+    </div>
+
+    <footer id="accountFooter">
+        <button class="accountButton" id="loginButton"  onclick="openLogin()">Anmelden</button>
+
+        <form action="/logOut" method="post" autocomplete="off">
+            <button class="accountButton" id="logoutButton" style="display: none; background: white; color: #4ca6ff; border: 2px solid #4ca6ff;">Abmelden</button>
+        </form>
+        
+
+        <hr class="boldHr">
+
+        <table style="width: 100%;">
+            <tr>
+                <td><img src="img/home.png" alt="Home" class="footerImg" onclick="window.location = '/'"></td>
+                <td><img src="img/group.png" alt="Share" class="footerImg" onclick="window.location = '/groups'"></td>
+                <td><img src="img/like.png" alt="Likes" class="footerImg" onclick="window.location = '/likes'"></td>
+                <td><img src="img/account.png" alt="Account" class="footerImg" style="background: #4ca6ff;"></td>
+            </tr>
+        </table>
+    </footer>
+
+    <script src="client.js"></script>
+</body>
+</html>

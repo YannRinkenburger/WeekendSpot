@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>WeekendSpot</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/minilogo.png">
+</head>
+<body onload="loadFunctions()">
+    <p id="userOutput" style="display: none;"><%= user %></p>
+    <p id="eventsOutput" style="display: none;"><%= events %></p>
+
+    <header id="header" class="divider">
+        <center><img src="img/logo.png" alt="Logo" onclick="window.location = '/'" class="hover" width="60%"></center>
+        <hr class="boldHr" style="background: #4ca6ff; width: 95%; margin-bottom: 0px;" >
+    </header>
+
+    <div id="top" style="margin-top: 10px;">
+        <table style="width: 100%;">
+            <tr>
+                <th style="width: 76%;"></th>
+                <th style="width: 12%;"></th>
+                <th style="width: 12%;"></th>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="top-box">
+                        <img src="img/search.png" alt="Suche" width="30px">
+                        <input type="text" placeholder="Suche Events">
+                    </div>
+                </td>
+
+                <td style="text-align: center;">
+                    <img src="img/filter.png" alt="Suche" width="24px" style="margin-top: 5px;">
+                </td>
+
+                <td style="text-align: center;">
+                    <img src="" alt="Suche" width="24px" id="calendarDay" style="margin-top: 5px;">
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="main">
+        <h3>Nächste Veranstaltungen</h3>
+
+        <div id="dates">
+            <a>Heute</a>
+            <a>Morgen</a>
+            <a>Nächstes Wochenende</a>
+        </div>
+
+        <div id="browseDiv" class="flex-container"></div>
+    </div>
+
+    <footer>
+        <hr class="boldHr">
+
+        <table style="width: 100%;">
+            <tr>
+                <td><img src="img/home.png" alt="Home" style="background: #4ca6ff;" class="footerImg"></td>
+                <td><img src="img/group.png" alt="Share" class="footerImg" onclick="window.location = '/groups'"></td>
+                <td><img src="img/like.png" alt="Likes" class="footerImg" onclick="window.location = '/likes'"></td>
+                <td><img src="img/account.png" alt="Account" class="footerImg" onclick="window.location = '/account'"></td>
+            </tr>
+        </table>
+    </footer>
+
+    <script src="client.js"></script>
+</body>
+</html>

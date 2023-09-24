@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>WIISPOT</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/minilogo.png">
+</head>
+<body onload="openEventView(), loadComments(), loadParticipations()">
+    <p id="userOutput" style="display: none;"><%= user %></p>
+    <p id="eventOutput" style="display: none;"><%= event %></p>
+    <p id="commentsOutput" style="display: none;"><%= comments %></p>
+    <p id="postedOutput" style="display: none;"><%= posted %></p>
+    <p id="participationsOutput" style="display: none;"><%= participations %></p>
+    <p id="groupsOutput" style="display: none;"><%= groups %></p>
+    <p id="replyArrayOutput" style="display: none;"><%= replyArray %></p>
+
+    <div id="eventView">
+        <div id="eventViewTop">
+            <h2 id="viewHeadline" style="height: 20px; margin-left: 10px;">Event</h2>
+            <span class="close" onclick="window.location = '/home'" style="margin: 10px; font-size: 40px; margin-top: -50px;">&times;</span>
+
+            <hr class="boldHr">
+        </div>
+
+        <div id="eventViewContent"> 
+            <h2 id="eventViewTitle"></h2>
+            
+            <div id="eventViewDiv">
+                <p id="eventViewDate"></p>
+                <p id="eventViewLocation"></p>
+                <div id="eventViewAge" class="age-restriction" style="margin-top: 30px;"></div> 
+
+                <div class="interactionDiv" id="interactionDivEventView"></div>
+            </div>
+        </div>
+
+        <div class="list" style="margin: 10px; margin-top: 20px; margin-bottom: -20px;">
+            <div class="eventViewCategory">Party</div>
+            <div class="eventViewCategory">Konzert</div>
+            <div class="eventViewCategory">Unterhaltung</div>
+            <div class="eventViewCategory">Sport</div>
+        </div>
+
+        <div class="eventFoldOut" style="margin-top: 30px;">
+            <table onclick="triggerEventFoldOut(0)">
+                <tr>
+                    <th style="width: 10%;" class="trigger">+</th>
+                    <th style="width: 40%; text-align: left;">Beschreibung</th>
+                </tr>
+            </table>
+
+            <div class="eventTableContent" id="eventViewDescription" style="display: none;"></div>
+        </div>
+
+        <div class="eventFoldOut">
+            <table onclick="triggerEventFoldOut(1)">
+                <tr>
+                    <th style="width: 10%;" class="trigger">+</th>
+                    <th style="width: 40%; text-align: left;">Tickets</th>
+                </tr>
+            </table>
+
+            <div class="eventTableContent" id="ticketArea" style="display: none;">
+                <div id="eventViewTicketsArea"></div>
+            </div>
+        </div>
+
+        <div class="eventFoldOut">
+            <table onclick="triggerEventFoldOut(2)">
+                <tr>
+                    <th style="width: 10%;" class="trigger">+</th>
+                    <th style="width: 40%; text-align: left;">Kontakt</th>
+                </tr>
+            </table>
+
+            <div class="eventTableContent" id="ticketArea" style="display: none;">
+                <p id="eventViewOrganizer"></p>
+                <div id="eventViewLinksArea"></div>
+            </div>
+        </div>
+        
+        <table style="width: 80%; margin: auto; margin-top: 20px; margin-bottom: -25px;">
+            <tr>
+                <td style="width: 40%; text-align: center;"><img src="/img/little_comment.png" alt="Kommentare" class="eventMenu" onclick="eventMenu(0)" style="background: #3eb1be; padding: 5px; border-radius: 20px;"></td>
+                <td style="width: 40%; text-align: center;"><img src="/img/check.png" alt="Teilnehmer" class="eventMenu" onclick="eventMenu(1)" style="padding: 5px; border-radius: 20px;"></td>
+            </tr>
+        </table>
+
+        <hr style="margin-top: 30px;">
+
+        <div id="commentSection">
+            <form action="/comment" method="post" id="commentForm">
+                <table id="commentFormTable">
+                    <input type="text" name="event" autocomplete="off" readonly style="display: none;" id="commentEventInput">
+
+                    <tr>
+                        <td style="width: 90%;"><input type="text" name="text" placeholder="Schreibe einen Kommentar" autocomplete="off"></td>
+                        <td><button><img src="/img/send.png" alt="Senden"></button></td>
+                    </tr>
+                </table>
+            </form>
+
+            <div id="commentCounter"></div>
+        </div>
+
+        <div id="participationSection" style="display: none;">
+            <div id="participationCounter"></div>
+
+            <div class="search-box">
+                <img src="img/search.png" alt="Suche" width="30px">
+                <input type="text" placeholder="Nach Freunden suchen" id="searchUser" onkeyup="displayParticipationUserByUsername(this.value)">
+            </div>
+        </div>
+    </div>
+
+    <div id="shareDiv" style="display: none;">
+        <div class="midClose">
+            <span onclick="closeShareDiv()">&times;</span>
+        </div>
+
+        <div id="shareContent">
+            <hr class="boldHr" style="margin-top: -10px;">
+
+            <div class="top-box" style="width: 80%; margin: auto; position: unset; background: #202020;">
+                <img src="img/search.png" alt="Suche" width="30px">
+                <input type="text" placeholder="Nach Chat suchen" onkeyup="searchGroupByName(this.value)">
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <hr class="boldHr">
+
+        <table style="width: 100%;">
+            <tr>
+                <td><img src="img/home.png" alt="Home"  class="footerImg" onclick="window.location = '/home'"></td>
+                <td><img src="img/search.png" alt="Share" class="footerImg" onclick="window.location = '/search'"></td>
+                <td><img src="img/like.png" alt="Likes" class="footerImg" onclick="window.location = '/likes'"></td>
+                <td><img src="img/account.png" alt="Account" class="footerImg" onclick="window.location = '/account'"></td>
+            </tr>
+        </table>
+    </footer>
+
+    <script src="client.js"></script>
+</body>
+</html>

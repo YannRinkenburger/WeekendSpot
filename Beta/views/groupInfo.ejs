@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>WIISPOT</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/minilogo.png">
+</head>
+<body onload="loadGroupInfo()">
+    <p id="userOutput" style="display: none;"><%= user %></p>
+    <p id="groupOutput" style="display: none;"><%= group %></p>
+    <p id="requestsOutput" style="display: none;"><%= requests %></p>
+
+    <div id="profileTop" style="margin-top: 20px; margin-left: 10px;">
+        <form action="/groups" method="get">
+            <input type="text" id="usernameGroupsInfoInput" name="username" readonly style="display: none;">
+            <button style="background: none; border: none;"><img src="img/arrow.png" class="rotateimg180" alt="Zurück"></button>
+        </form>
+    </div>
+
+    <div id="main">
+        <div id="infoDiv" style="margin-top: 20px;">
+            <center><img src="/img/group.png" alt="Group" id="groupImage" style="border: 2px solid white; border-radius: 35px; padding: 20px;"></center>
+            <h2 style="text-align: center; margin-top: 0px;"><%= groupname %></h2>
+            <p style="text-align: center; color: #3eb1be; margin-top: -15px;" id="createdByText"></p>
+        </div>
+        
+        <table id="groupInfoTable">
+            <tr>
+                <td class="onlyAdmin">
+                    <form action="/editGroup" method="get">
+                        <input type="text" name="id" id="editGroupInput" readonly style="display: none;">
+                        <button style="border: none; background: none;"><img src="/img/edit.png" alt="Bearbeiten"></td></button>
+                    </form>
+                <td class="onlyAdmin">
+                    <form action="/deleteGroup" method="post">
+                        <button style="border: none; background: none;"><img src="/img/little_delete.png" alt="Löschen"></button>
+                    </form>
+                </td> 
+                <td>
+                    <form action="/leaveGroup" method="post">
+                        <button style="border: none; background: none;"><img src="/img/leave.png" alt="Verlassen"></button>
+                    </form>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="onlyAdmin">Bearbeiten</td>
+                <td class="onlyAdmin">Löschen</td>
+                <td>Verlassen</td>
+            </tr>
+        </table>
+
+        <div class="search-box" style="margin-top: 30px;">
+            <img src="img/search.png" alt="Suche" width="30px">
+            <input type="text" placeholder="Nach Mitgliedern suchen" id="searchUser" onkeyup="displayUsersInGroupByUsername(this.value)">
+        </div>
+
+        <div id="usersCounter"></div>
+
+        <table id="userTable" style="width: 100%;">
+            <tr>
+                <th style="width: 10%;"></th>
+                <th style="width: 60%;"></th>
+                <th style="width: 30%;"></th>
+            </tr>
+        </table>
+    </div>
+
+    <footer id="footer">
+        <hr class="boldHr">
+
+        <table style="width: 100%;">
+            <tr>
+                <td><img src="img/home.png" alt="Home"  class="footerImg" onclick="window.location = '/home'"></td>
+                <td><img src="img/search.png" alt="Share" class="footerImg" onclick="window.location = '/search'"></td>
+                <td><img src="img/like.png" alt="Likes" class="footerImg" onclick="window.location = '/likes'"></td>
+                <td><img src="img/account.png" alt="Account" class="footerImg" onclick="window.location = '/account'"></td>
+            </tr>
+        </table>
+    </footer>
+
+    <script src="client.js"></script>
+</body>
+</html>

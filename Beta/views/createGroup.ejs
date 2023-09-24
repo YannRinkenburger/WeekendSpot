@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>WIISPOT</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/minilogo.png">
+</head>
+<body onload="createGroup()">
+    <p id="userOutput" style="display: none;"><%= user %></p>
+    <p id="friendsOutput" style="display: none;"><%= friends %></p>
+
+    <div id="profileTop">
+        <table style="width: 100%;">
+            <tr>
+                <td style="width: 10%;">
+                    <form action="/groups" method="get">
+                        <input type="text" id="usernameInput" name="username" readonly style="display: none;">
+                        <button style="background: none; border: none;"><img src="img/arrow.png" class="rotateimg180" alt="Zurück"></button>
+                    </form>
+                </td>
+
+                <td style="width: 90%;">
+                    <h2>Erstelle eine Gruppe</h2>
+                </td>
+            </tr>
+        </table>
+
+        <hr class="boldHr" style="margin-top: -15px;">
+    </div>
+
+    <div id="main">
+
+        <div id="infoDiv" style="margin-top: 20px;">
+            <center><img src="img/add_user_big.png" alt="Add User"></center>
+            <p style="text-align: center; margin: 20px;">Du musst mit der Person befreundet sein, um ihn/sie zu einer Gruppe hinzufügen zu können. Eine Gruppe muss aus mindestens 3 Usern bestehen.</p>
+            <button class="accountButton" style="width: 80%; margin-top: -10px; padding: 4px; background: none; color: #3eb1be; border: 2px solid #3eb1be;" onclick="reloadFriends()">Freunde neuladen</button>
+        </div>
+
+        <table id="addedTable" style="width: 100%;">
+            <tr>
+                <th style="width: 10%;"></th>
+                <th style="width: 75%;"></th>
+                <th style="width: 15%;"></th>
+            </tr>
+        </table>
+
+        <form action="/createGroup" method="post" id="createGroupButtonForm" style="display: none;" disabled>
+            <input type="text" name="usernames" id="groupCreationUsernameInput" readonly style="display: none;" required>
+
+            <div class="search-box">
+                <input type="text" name="title" id="groupCreationTitleInput" required placeholder="Titel eingeben" autocomplete="off">
+            </div>
+
+            <button class="accountButton" id="createGroupButton">Gruppe erstellen</button>
+        </form>
+
+        <hr>
+
+        <div class="search-box">
+            <img src="img/search.png" alt="Suche" width="30px">
+            <input type="text" placeholder="Nach Nutzern suchen" id="searchUserGroupCreation" onkeyup="displayFriendsByUsername(this.value)">
+        </div>
+        
+
+        <table id="friendsTable" style="width: 100%; margin-top: -10px;">
+            <tr>
+                <th style="width: 10%;"></th>
+                <th style="width: 75%;"></th>
+                <th style="width: 15%;"></th>
+            </tr>
+        </table>
+    </div>
+
+    <footer id="footer">
+        <hr class="boldHr">
+
+        <table style="width: 100%;">
+            <tr>
+                <td><img src="img/home.png" alt="Home"  class="footerImg" onclick="window.location = '/home'" style="background: #3eb1be;"></td>
+                <td><img src="img/search.png" alt="Share" class="footerImg" onclick="window.location = '/search'"></td>
+                <td><img src="img/like.png" alt="Likes" class="footerImg" onclick="window.location = '/likes'"></td>
+                <td><img src="img/account.png" alt="Account" class="footerImg" onclick="window.location = '/account'"></td>
+            </tr>
+        </table>
+    </footer>
+
+    <script src="client.js"></script>
+</body>
+</html>

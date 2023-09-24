@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>WIISPOT</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/minilogo.png">
+</head>
+<body onload="loadFunctions()">
+    <p id="userOutput" style="display: none;"><%= user %></p>
+    <p id="eventsOutput" style="display: none;"><%= events %></p>
+    <p id="usersOutput" style="display: none;"><%= users %></p>
+    <p id="postsOutput" style="display: none;"><%= posts %></p>
+    <p id="groupsOutput" style="display: none;"><%= groups %></p>
+    <p id="friendsPostsOutput" style="display: none;"><%= friendsPosts %></p>
+    
+
+    <header id="header">
+        <table style="width: 90%; margin: auto; margin-bottom: 10px;">
+            <tr>
+                <th style="width: 66%;"></th>
+                <th style="width: 12%;"></th>
+                <th style="width: 12%;"></th>
+            </tr>
+
+            <tr>
+                <td>    
+                    <img src="img/header.png" alt="Logo" onclick="window.location = '/home'" class="hover" style="margin-left: -10px;">
+                </td>
+
+                <td style="text-align: center;">
+                    <form action="/friendRequests" method="get">
+                        <input type="text" name="username" id="usernameFriendRequestsInput" readonly style="display: none;">
+                        <button style="background: none; border: none;"><img src="img/add_user.png" alt="Add user" width="24px" style="margin-top: 5px;"></button>
+                    </form>
+                </td>
+
+                <td style="text-align: center;">
+                    <form action="/groups" method="get">
+                        <input type="text" name="username" id="usernameGroupsInput" readonly style="display: none;">
+                        <button style="background: none; border: none;"><img src="img/chats.png" alt="Chats" width="24px" style="margin-top: 5px;"></button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+
+        <div class="top-box" id="searchUser" style="width: 90%; margin-left: 5%; margin-top: -5px;">
+            <img src="img/search.png" alt="Suche" width="30px">
+            <input type="text" placeholder="Nach Nutzern suchen" onkeyup="getUsers(this.value)">
+        </div>
+
+        <hr class="boldHr" style="width: 95%; margin-top: 50px;">
+    </header>
+
+    <div id="main" style="margin-top: -10px;">
+        <div id="homeDiv" class="flex-container"></div>
+        
+        <div>
+            <h3>Nächste Veranstaltungen</h3>
+    
+            <div class="list" style="margin-top: -10px;">
+                <div style="margin: 0px; margin-right: 5px;" class="dayOption" onclick="dayOptions(0)">Heute</div>
+                <div style="margin: 0px; margin-right: 5px;" class="dayOption" onclick="dayOptions(1)">Morgen</div>
+                <div style="margin: 0px; margin-right: 5px;" class="dayOption" onclick="dayOptions(2)">Nächstes Wochenende</div>
+    
+                <form action="/searchByDay" method="post" style="display: none;">
+                    <input type="text" name="dayOption" id="dayOptionsOutput" readonly style="display: none;">
+                    <input type="text" name="dayOptionIndex" id="dayOptionsIndexOutput" readonly style="display: none;">
+    
+                    <button id="daySubmit"></button>
+                </form>
+            </div>
+    
+            <div id="browseDiv" class="flex-container"></div>
+        </div>
+    </div>
+
+    <div id="shareDiv" style="display: none;">
+        <div class="midClose">
+            <span onclick="closeShareDiv()">&times;</span>
+        </div>
+
+        <div id="shareContent">
+            <hr class="boldHr" style="margin-top: -10px;">
+
+            <div class="top-box" style="width: 80%; margin: auto; position: unset; background: #202020;">
+                <img src="img/search.png" alt="Suche" width="30px">
+                <input type="text" placeholder="Nach Chat suchen" onkeyup="searchGroupByName(this.value)">
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <hr class="boldHr">
+
+        <table style="width: 100%;">
+            <tr>
+                <td><img src="img/home.png" alt="Home"  class="footerImg" style="background: #3eb1be;"></td>
+                <td><img src="img/search.png" alt="Share" class="footerImg" onclick="window.location = '/search'"></td>
+                <td><img src="img/like.png" alt="Likes" class="footerImg" onclick="window.location = '/likes'"></td>
+                <td><img src="img/account.png" alt="Account" class="footerImg" onclick="window.location = '/account'"></td>
+            </tr>
+        </table>
+    </footer>
+
+    <script src="client.js"></script>
+</body>
+</html>

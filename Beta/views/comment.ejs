@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>WIISPOT</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/minilogo.png">
+</head>
+<body onload="loadCommentView()">
+    <p id="userOutput" style="display: none;"><%= user %></p>
+    <p id="profileOutput" style="display: none;"><%= profile %></p>
+    <p id="eventIdOutput" style="display: none;"><%= eventId %></p>
+    <p id="commentOutput" style="display: none;"><%= comment %></p>
+    <p id="repliesOutput" style="display: none;"><%= replies %></p>
+ 
+    <div id="commentView">
+        <div id="eventViewTop" style="margin-top: 10px;">
+            <form action="/eventView" method="get">
+                <input type="text" id="eventIdInput" name="id" readonly style="display: none;">
+                <button style="background: none; border: none;"><img src="img/arrow.png" class="rotateimg180" alt="Zurück"></button>
+            </form>
+        </div>
+    
+        <div id="commentArea" style="margin-left: 10px;">
+            <table>
+                <tr>
+                    <td rowspan="2" style="width: 12%;">
+                        <form action="/profile" method="get">
+                            <input type="text" name="username" id="profileInput" readonly style="display: none;">
+                            
+                            <button style="background: none; border: none;"><img src="img/profile.png" alt="Profil" style="width: 30px; margin-bottom: 10px; margin-right: 10px;"></button>
+                        </form>
+                    </td>
+                    <td>
+                        <div style="display: flex;">
+                            <h3 id="nameText" style="margin-top: 0px; margin-right: 5px;"></h3>
+                            <img src="/img/verified.png" id="verifiedImg" alt="Blauer Haken" style="width: 24px; height: 24px;">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p id="tagname"></p>
+                    </td>
+                </tr>
+            </table>
+
+            <p id="tagname"></p>
+    
+            <p id="commentText"></p>
+            <p id="commentTime" class="comment-date" style="text-align: right; margin-right: 10px;"></p>
+        </div> 
+    
+        <hr class="boldHr">
+    
+        <div id="commentCounter"></div>
+        <div id="replyArea"></div>
+    </div>
+
+    <footer id="footer">
+        <form action="/reply" method="post" id="messageForm">
+            <table id="commentFormTable">
+                <tr>
+                    <td style="width: 90%;"><input type="text" name="text" placeholder="Schreibe einen Kommentar" autocomplete="off"></td>
+                    <td><button><img src="/img/send.png" alt="Senden" style="width: 24px;"></button></td>
+                </tr>
+            </table>
+        </form>
+
+        <hr class="boldHr">
+
+        <table style="width: 100%;">
+            <tr>
+                <td><img src="img/home.png" alt="Home"  class="footerImg" onclick="window.location = '/home'"></td>
+                <td><img src="img/search.png" alt="Share" class="footerImg" onclick="window.location = '/search'"></td>
+                <td><img src="img/like.png" alt="Likes" class="footerImg" onclick="window.location = '/likes'"></td>
+                <td><img src="img/account.png" alt="Account" class="footerImg" onclick="window.location = '/account'"></td>
+            </tr>
+        </table>
+    </footer>
+
+    <script src="client.js"></script>
+</body>
+</html>

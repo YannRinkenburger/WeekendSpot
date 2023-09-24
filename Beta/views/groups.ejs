@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>WIISPOT</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/minilogo.png">
+</head>
+<body onload="loadGroups()">
+    <p id="userOutput" style="display: none;"><%= user %></p>
+    <p id="groupsOutput" style="display: none;"><%= groups %></p>
+
+    <div>
+        <table style="width: 100%;">
+            <tr>
+                <td style="width: 10%;">
+                    <form action="/home" method="get">
+                        <button style="background: none; border: none;"><img src="img/arrow.png" class="rotateimg180" alt="Zurück"></button>
+                    </form>
+                </td>
+
+                <td style="width: 80%;">
+                    <h2 id="groupUsernameText">username</h2>
+                </td>
+
+                <td style="width: 10%;">
+                    <img src="img/plus.png" alt="Chats" width="24px" onclick="window.location = '/createGroup'">
+                </td>
+            </tr>
+        </table>
+
+        <hr class="boldHr" style="margin-top: -15px;">
+    </div>
+
+    <div class="top-box" style="width: 90%; margin-left: auto; margin-right: auto; position: unset; z-index: 0; margin-top: 0px;">
+        <img src="img/search.png" alt="Suche" width="30px">
+        <input type="text" placeholder="Nach Chats suchen">
+    </div> 
+
+    <div id="main" style="margin-top: 10px;">
+        <div>
+            <h4 style="margin: 0;">Nachrichten</h4>
+        </div>   
+
+        <div id="chatDiv" style="margin-top: 30px;"></div>
+    </div>
+
+    <div id="shareDiv" style="display: none;">
+        <div class="midClose">
+            <span onclick="closeShareDiv()">&times;</span>
+        </div>
+
+        <div id="shareContent">
+            <hr class="boldHr" style="margin-top: -10px;">
+
+            <div class="top-box" style="width: 80%; margin: auto; position: unset; background: #202020;">
+                <img src="img/search.png" alt="Suche" width="30px">
+                <input type="text" placeholder="Nach Chat suchen" onkeyup="searchGroupByName(this.value)">
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <hr class="boldHr">
+
+        <table style="width: 100%;">
+            <tr>
+                <td><img src="img/home.png" alt="Home"  class="footerImg" onclick="window.location = '/home'" style="background: #3eb1be;"></td>
+                <td><img src="img/search.png" alt="Share" class="footerImg" onclick="window.location = '/search'"></td>
+                <td><img src="img/like.png" alt="Likes" class="footerImg" onclick="window.location = '/likes'"></td>
+                <td><img src="img/account.png" alt="Account" class="footerImg" onclick="window.location = '/account'"></td>
+            </tr>
+        </table>
+    </footer>
+
+    <script src="client.js"></script>
+</body>
+</html>

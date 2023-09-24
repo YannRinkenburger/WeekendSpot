@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>WIISPOT</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/minilogo.png">
+</head>
+<body onload="loadProfile()">
+    <p id="userOutput" style="display: none;"><%= user %></p>
+    <p id="profileOutput" style="display: none;"><%= profile %></p>
+    <p id="followedOutput" style="display: none;"><%= followed %></p>
+    <p id="postsProfileOutput" style="display: none;"><%= postsProfile %></p>
+    <p id="postsOutput" style="display: none;"><%= posts %></p>
+
+    <div id="profileTop">
+        <h2 id="profileHeadline" style="height: 20px; margin-left: 10px;"></h2>
+        <span class="close" onclick="window.location = '/home'" style="margin: 10px; font-size: 40px; margin-top: -50px;">&times;</span>
+
+        <hr class="boldHr">
+    </div>
+
+    <div id="main" style="margin-top: 5px;">
+        <div style="display: flex;">
+            <h3 id="fullname" style="margin-top: 0px; margin-right: 5px;"></h3>
+            <img src="/img/verified.png" id="verifiedImg" alt="Blauer Haken" style="width: 24px; height: 24px;">
+        </div>
+        
+        <p id="tagname"></p>
+
+        <div style="display: inline-flex;">
+            <img src="/img/calendar.png" alt="Kalender">
+            <a id="timeText" style="margin-top: 3px; margin-left: 5px;"></a>
+        </div>
+
+        <br>
+
+        <div style="display: inline-flex;">
+            <img src="/img/ranking/weiß.png" id="participationImg" alt="Kalender">
+            <a id="participationText" style="margin-top: 3px; margin-left: 5px;"></a>
+        </div>
+
+        <div style="float: right; display: flex;">
+            <div id="followChatArea" style="margin-top: 28px; margin-right: 15px;">
+                <form action="/createChat" method="post">
+                    <input type="text" id="followChatInput" name="username" readonly style="display: none;">
+                    <button style="background: none; border: none;"><img src="/img/sms.png" alt="Nachricht"></button>
+                </form>
+            </div>
+
+            <div id="followButtonArea" style="margin-top: 20px;"></div>
+        </div>
+
+        <hr style="margin-top: 40px;">
+
+        <div id="browseDiv" class="flex-container">
+            <div id="infoDiv" style="margin-top: 30px;">
+                <center><img src="img/add_user_big.png" alt="Add User" style="margin-top: 30px;"></center>
+                <p style="text-align: center; margin: 20px;">Du musst mit der Person befreundet sein, um seine/ihre Posts sehen zu können.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <hr class="boldHr">
+
+        <table style="width: 100%;">
+            <tr>
+                <td><img src="img/home.png" alt="Home"  class="footerImg" onclick="window.location = '/home'" style="background: #3eb1be;"></td>
+                <td><img src="img/search.png" alt="Share" class="footerImg" onclick="window.location = '/search'"></td>
+                <td><img src="img/like.png" alt="Likes" class="footerImg" onclick="window.location = '/likes'"></td>
+                <td><img src="img/account.png" alt="Account" class="footerImg" onclick="window.location = '/account'"></td>
+            </tr>
+        </table>
+    </footer>
+
+    <script src="client.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>WIISPOT</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/minilogo.png">
+</head>
+<body onload="loadFunctions(), loadLikesData()">
+    <header id="header">
+        <img src="img/header.png" alt="Logo" onclick="window.location = '/home'" class="hover" style="margin-left: 15px; margin-bottom: 10px;">
+    </header>
+
+    <div id="main">
+        <h2 style="height: 20px;">Deine Likes</h2>
+        <hr class="boldHr">
+
+        <div class="info">
+            <p>Bitte beachte: Deine Likes werden nur lokal auf deinem Endgerät gespeichert!</p>
+        </div>
+
+        <div id="browseDiv" class="flex-container"></div>
+    </div>
+
+    <div id="shareDiv" style="display: none;">
+        <div class="midClose">
+            <span onclick="closeShareDiv()">&times;</span>
+        </div>
+
+        <div id="shareContent">
+            <hr class="boldHr" style="margin-top: -10px;">
+
+            <div class="top-box" style="width: 80%; margin: auto; position: unset; background: #202020;">
+                <img src="img/search.png" alt="Suche" width="30px">
+                <input type="text" placeholder="Nach Chat suchen" onkeyup="searchGroupByName(this.value)">
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <hr class="boldHr">
+
+        <table style="width: 100%;">
+            <tr>
+                <td><img src="img/home.png" alt="Home" class="footerImg" onclick="window.location = '/home'"></td>
+                <td><img src="img/search.png" alt="Share" class="footerImg" onclick="window.location = '/search'"></td>
+                <td><img src="img/like.png" alt="Likes" class="footerImg" style="background: #3eb1be;"></td>
+                <td><img src="img/account.png" alt="Account" class="footerImg" onclick="window.location = '/account'"></td>
+            </tr>
+        </table>
+    </footer>
+
+    <script src="client.js"></script>
+</body>
+</html>

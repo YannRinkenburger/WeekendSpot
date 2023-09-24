@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>WIISPOT</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/minilogo.png">
+</head>
+<body onload="loadParticipations()">
+    <p id="participationsOutput" style="display: none;"><%= participations %></p>
+
+    <div id="eventView">
+        <div id="eventViewTop">
+            <h2 id="viewHeadline" style="height: 20px; margin-left: 10px;">Teilnahmen</h2>
+            <span class="close" onclick="window.location = '/home'" style="margin: 10px; font-size: 40px; margin-top: -50px;">&times;</span>
+
+            <hr class="boldHr">
+        </div>
+
+        <div id="participationSection">
+            <div id="participationCounter" style="margin: 15px;"></div>
+
+            <div class="search-box">
+                <img src="img/search.png" alt="Suche" width="30px">
+                <input type="text" placeholder="Nach Freunden suchen" id="searchUser" onkeyup="displayParticipationUserByUsername(this.value)">
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <hr class="boldHr">
+
+        <table style="width: 100%;">
+            <tr>
+                <td><img src="img/home.png" alt="Home"  class="footerImg" onclick="window.location = '/home'" style="background: #3eb1be;"></td>
+                <td><img src="img/search.png" alt="Share" class="footerImg" onclick="window.location = '/search'"></td>
+                <td><img src="img/like.png" alt="Likes" class="footerImg" onclick="window.location = '/likes'"></td>
+                <td><img src="img/account.png" alt="Account" class="footerImg" onclick="window.location = '/account'"></td>
+            </tr>
+        </table>
+    </footer>
+
+    <script src="client.js"></script>
+</body>
+</html>

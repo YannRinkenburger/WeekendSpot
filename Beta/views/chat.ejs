@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>WIISPOT</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/minilogo.png">
+</head>
+<body onload="loadChat()">
+    <p id="userOutput" style="display: none;"><%= user %></p>
+    <p id="nameOutput" style="display: none;"><%= name %></p>
+    <p id="idOutput" style="display: none;"><%= id %></p>
+    <p id="messagesOutput" style="display: none;"><%= messages %></p>
+
+    <div>
+        <table style="width: 100%;">
+            <tr>
+                <td style="width: 10%;">
+                    <form action="/groups" method="get">
+                        <input type="text" name="username" id="usernameGroupsInput" readonly style="display: none;">
+                        <button style="background: none; border: none;"><img src="img/arrow.png" class="rotateimg180" alt="Zurück"></button>
+                    </form>
+                </td>
+
+                <td style="width: 80%;">
+                    <h2 id="groupNameText">Name</h2>
+                </td>
+
+                <td style="width: 10%;">
+                    <form action="/groupInfo" method="get">
+                        <input type="text" name="id" id="chatIdInput" readonly style="display: none;">
+                        <button style="background: none; border: none;"><img src="img/information.png" alt="Info"></button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+
+        <hr class="boldHr" style="margin-top: -15px;">
+    </div>
+
+    <div id="chatMain" style="margin-top: 10px;"></div>
+
+    <footer id="accountFooter">
+        <div id="emojiPicker" style="display: none;">
+            <div class="search-box" style="border: 1px solid; margin-top: 5px; background: transparent; float: left; margin-left: 10px; width: 80%;">
+                <input type="text" name="title" id="searchEmoji" required placeholder="Search..." autocomplete="off" onkeyup="searchEmoji(this.value)">
+            </div>
+
+            <span class="close" onclick="openEmojiDiv()" style="margin-right: 10px; font-size: 35px;">&times;</span>
+
+            <div id="emojiList"></div>
+        </div>
+
+        <form action="/message" method="post" id="messageForm">
+            <table id="commentFormTable">
+                <input type="text" name="groupId" autocomplete="off" readonly style="display: none;" id="messageGroupInput">
+
+                <tr>
+                    <td style="width: 90%;"><input type="text" name="text" id="messageTextInput" placeholder="Schreibe eine Nachricht" autocomplete="off"></td>
+                    <td><img src="/img/face.png" alt="Emojis" style="width: 24px;" onclick="openEmojiDiv()"></td>
+                    <td><button><img src="/img/send.png" alt="Senden" style="width: 24px;"></button></td>
+                </tr>
+            </table>
+        </form>
+
+        <hr class="boldHr">
+
+        <table style="width: 100%;">
+            <tr>
+                <td><img src="img/home.png" alt="Home" class="footerImg" onclick="window.location = '/home'"></td>
+                <td><img src="img/search.png" alt="Share" class="footerImg" onclick="window.location = '/search'"></td>
+                <td><img src="img/like.png" alt="Likes" class="footerImg" onclick="window.location = '/likes'"></td>
+                <td><img src="img/account.png" alt="Account" class="footerImg" onclick="window.location = '/account'"></td>
+            </tr>
+        </table>
+    </footer>
+
+    <script src="client.js"></script>
+    <script src="emoji.js"></script>
+</body>
+</html>

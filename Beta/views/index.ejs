@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>WIISPOT</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/minilogo.png">
+</head>
+<body onload="loadFunctions()">
+    <p id="errorOutput" style="display: none;"><%= error %></p>
+    <div id="main">
+        <center><img src="/img/logo.png" id="logoImage" alt="Logo" style="margin-top: 50px;"></center>
+    </div>
+
+    <footer id="footer">
+        <button class="accountButton" id="loginButton" style="width: 90%;" onclick="openLogin()">Einloggen</button>
+        <button class="accountButton" id="loginButton" style="width: 90%; margin-top: 5px; color: #3eb1be; background: none;" onclick="openRegistration()">Registrieren</button>
+
+        <p style="text-align: center; color: gray; margin-bottom: 10px; margin-top: 30px; font-size: 17px; font-weight: bold;">Du bist Event-Veranstalter?</p>
+        <button class="accountButton" id="loginButton" style="width: 90%; background: none; color: #7d24ff; border: 1px solid #7d24ff;" onclick="openCreator()">Creator werden</button>
+    </footer>
+
+    <div id="login" style="display: none;">
+        <div class="content">
+            <span class="close" onclick="closeLogin()">&times;</span>
+            <center><h2 style="margin-top: 15px; margin-left: 10px;">Einloggen</h2></center>
+            <hr style="width: 100%;">
+
+            <h2>Willkommen zurück!</h2>
+            
+            <form method="post" action="/logIn" autocomplete="off">
+                <div class="formInput">
+                    <h4>Username</h4>
+                    <input id="userNameInputLogIn" type="text" name="username">
+                </div>
+                 
+                <div class="formInput">
+                    <h4>Passwort</h4>
+                    <input id="passwordInputLogIn" type="password" name="password">
+                </div>
+
+                <p class="error" id="loginError"></p>
+                
+                <button class="formButton1">Log In</button>
+            </form>
+
+            <p id="forgetPassword">Passwort vergessen?</p>
+
+            <hr style="margin-top: 10px;">
+
+            <h2>Ich bin neu hier</h2>
+            <button class="formButton2" onclick="openRegistration()">Registrieren</button>
+        </div>
+    </div>
+
+    <div id="registration" style="display: none;">
+        <div class="content">
+            <span class="close" onclick="closeRegistration()">&times;</span>
+            <center><h2 style="margin-top: 15px; margin-left: 10px;">Registrieren</h2></center>
+            <hr style="width: 100%;">
+
+            <h2>Herzlich Willkommen!</h2>
+            <p style="color: grey;">Bitte gebe folgede Daten ein. Falls du dir bei etwas Unsicher bist, keine Angst du kannst sie später ändern. Wenn du dich bei WIISPOT registrierst, stimmst du automatisch den AGBs zu.</p>
+            
+            <form method="post" action="/signIn" autocomplete="off">
+                <div class="formInput">
+                    <h4>Vorname</h4>
+                    <input id="firstnameInput" type="text" name="firstname">
+                </div>
+                 
+                <div class="formInput">
+                    <h4>Nachname</h4>
+                    <input id="lastnameInput" type="text" name="lastname">
+                </div>
+
+                <div class="formInput">
+                    <h4>Username</h4>
+                    <input id="userNameInput" type="text" name="username">
+                </div>
+
+                <div class="formInput">
+                    <h4>E-Mail</h4>
+                    <input id="emailInput" type="email" name="email">
+                </div>
+
+                <div class="formInput">
+                    <h4>Passwort</h4>
+                    <input id="passwordInput" type="password" name="password">
+                </div>
+
+                <p class="error" id="signInError"></p>
+
+                <button class="formButton1">Registrierung abschließen</button>
+            </form>
+
+            <hr style="margin-top: 10px;">
+
+            <h2>Bereits registriert?</h2>
+            <button class="formButton2" onclick="openLogin()">Log-In</button>
+        </div>
+    </div>
+
+    <div id="beCreator" style="display: none;">
+        <div class="content">
+            <span class="close" onclick="closeCreator()">&times;</span>
+            <center><h2 style="margin-top: 15px; margin-left: 10px;">Creator werden</h2></center>
+            <hr style="width: 100%;">
+
+            <p>Schön, dass Sie als Creator auf unserer Platform aktiv werden möchten.</p>
+            
+            <p>Aktuell arbeiten wir daran, dass Sie auf unserer Platform Events hinzufügen können und mit den Benutzern interagieren können.</p>
+
+            <p>Sollten Sie fragen haben, kontaktieren Sie uns über die folgende E-Mail:</p>
+
+            <p class="email" onclick="location.href='mailto:weekendspotde@gmail.com?Subject=Creator werden'">weekendspotde@gmail.com</p>
+        </div>
+    </div>
+
+    <script src="client.js"></script>
+</body>

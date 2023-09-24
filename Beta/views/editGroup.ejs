@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>WIISPOT</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/minilogo.png">
+</head>
+<body onload="loadGroupEdit()">
+    <p id="userOutput" style="display: none;"><%= user %></p>
+    <p id="groupOutput" style="display: none;"><%= group %></p>
+    <p id="friendsOutput" style="display: none;"><%= friends %></p>
+
+    <div id="profileTop" style="margin-top: 20px; margin-left: 10px;">
+        <form action="/groupInfo" method="get">
+            <input type="text" id="usernameGroupsInfoInput" name="id" readonly style="display: none;">
+            <button style="background: none; border: none;"><img src="img/arrow.png" class="rotateimg180" alt="Zurück"></button>
+        </form>
+    </div>
+
+    <div id="main">
+        <form action="/updateGroup" method="post">
+            <div class="search-box" style="margin-top: 30px; padding: 5px; margin-bottom: 30px;" id="groupnameDiv">
+                <img src="/img/edit.png" alt="Edit">
+                <input type="text" name="groupname" id="groupnameInput" placeholder="Gruppennamen eingeben" style="height: 20px;">
+            </div>
+
+            <table class="editGroupTable" onclick="openEditDiv('addUserDiv')">
+                <tr>
+                    <td style="width: 10%;"><img src="/img/add_user.png" alt="Hinzufügen"></td>
+                    <td style="width: 60%;">Nutzer hinzufügen</td>
+                </tr>
+            </table>
+
+            <table class="editGroupTable" onclick="openEditDiv('removeUserDiv')">
+                <tr>
+                    <td style="width: 10%;"><img src="/img/remove_user.png" alt="Hinzufügen"></td>
+                    <td style="width: 60%;">Nutzer entfernen</td>
+                </tr>
+            </table>
+
+            <table class="editGroupTable" style="margin-bottom: 30px;" onclick="openEditDiv('changeAdminDiv')">
+                <tr>
+                    <td style="width: 10%;"><img src="/img/crone.png" alt="Hinzufügen"></td>
+                    <td style="width: 60%;">Admin ändern</td>
+                </tr>
+            </table>
+
+            <table class="eventEditInfo" id="addedFriendsInfoTable" style="display: none;">
+                <tr>
+                    <td style="width: 10%;">!</td>
+                    <td style="width: 60%;" id="addedFriendsInfo"></td>
+                </tr>
+            </table>
+
+            <table class="eventEditInfo" id="removedUsersInfoTable" style="display: none;">
+                <tr>
+                    <td style="width: 10%;">!</td>
+                    <td style="width: 60%;" id="removedUsersInfo"></td>
+                </tr>
+            </table>
+
+            <table class="eventEditInfo" id="newAdminInfoTable" style="display: none;">
+                <tr>
+                    <td style="width: 10%;">!</td>
+                    <td style="width: 60%;" id="newAdminInfo"></td>
+                </tr>
+            </table>
+
+            <input type="text" name="addedFriends" id="addedFriendsInput" readonly style="display: none;">
+            <input type="text" name="removedUsers" id="removedUserInput" readonly style="display: none;">
+            <input type="text" name="newAdmin" id="newAdminInput" readonly style="display: none;">
+
+            <button class="accountButton" style="width: 90%; margin-top: 30px;">Änderungen anwenden</button>
+        </form>
+            
+        <form action="/groupInfo" method="get" style="text-align: center; margin-top: -5px;">
+            <input type="text" id="usernameGroupsInfoInput1" name="id" readonly style="display: none;">
+            <button class="accountButton" style="width: 80%; background: none; border: 2px solid red; color: red; font-size: 16px; padding: 5px;">Abbrechen</button>
+        </form>
+    </div>
+
+    <div id="addUserDiv" style="display: none;">
+        <button style="background: none; border: none; margin-top: 20px; margin-left: 10px;" onclick="closeEditDiv('addUserDiv')"><img src="img/arrow.png" class="rotateimg180" alt="Zurück"></button>
+        <a class="editGroupHeadline">Nutzer hinzufügen</a>
+
+        <div class="search-box" style="margin-top: 20px;">
+            <img src="img/search.png" alt="Suche" width="30px">
+            <input type="text" placeholder="Nach Mitgliedern suchen" id="searchUser" onkeyup="displayFriendsToAppendByUsername(this.value)">
+        </div>
+
+        <div id="friendsCounter"></div>
+
+        <table id="friendsTable" style="width: 90%; margin: auto;">
+            <tr>
+                <th style="width: 10%;"></th>
+                <th style="width: 70%;"></th>
+                <th style="width: 10%;"></th>
+            </tr>    
+        </table>
+
+        <div id="addedFriendsDiv" style="display: none;">
+            <div style="text-align: center; font-weight: bold;">Hinzugefügte Freunde</div>
+
+            <table id="addedFriendsTable" style="width: 90%; margin: auto;">
+                <tr>
+                    <th style="width: 10%;"></th>
+                    <th style="width: 70%;"></th>
+                    <th style="width: 10%;"></th>
+                </tr>    
+            </table>
+        </div>
+
+        <button class="accountButton" style="width: 90%; margin-top: 20px;" onclick="saveAddedFriends()">Änderungen Speichern</button>
+    </div>
+
+    <div id="removeUserDiv" style="display: none;">
+        <button style="background: none; border: none; margin-top: 20px; margin-left: 10px;" onclick="closeEditDiv('removeUserDiv')"><img src="img/arrow.png" class="rotateimg180" alt="Zurück"></button>
+        <a class="editGroupHeadline">Nutzer entfernen</a>
+
+        <div class="search-box" style="margin-top: 20px;">
+            <img src="img/search.png" alt="Suche" width="30px">
+            <input type="text" placeholder="Nach Mitgliedern suchen" id="searchUser" onkeyup="displayUsersInGroupToRemoveByUsername(this.value)">
+        </div>
+
+        <div id="userCounter"></div>
+
+        <table id="userInGroupTable" style="width: 90%; margin: auto;">
+            <tr>
+                <th style="width: 10%;"></th>
+                <th style="width: 70%;"></th>
+                <th style="width: 10%;"></th>
+            </tr>    
+        </table>
+
+        <div id="removedUserDiv" style="display: none;">
+            <div style="text-align: center; font-weight: bold;">Entfernte Nutzer</div>
+
+            <table id="removedUserTable" style="width: 90%; margin: auto;">
+                <tr>
+                    <th style="width: 10%;"></th>
+                    <th style="width: 70%;"></th>
+                    <th style="width: 10%;"></th>
+                </tr>    
+            </table>
+        </div>
+
+        <button class="accountButton" style="width: 90%; margin-top: 20px;" onclick="saveRemovedUsers()">Änderungen Speichern</button>
+    </div>
+
+    <div id="changeAdminDiv" style="display: none;">
+        <button style="background: none; border: none; margin-top: 20px; margin-left: 10px;" onclick="closeEditDiv('changeAdminDiv')"><img src="img/arrow.png" class="rotateimg180" alt="Zurück"></button>
+        <a class="editGroupHeadline">Admin ändern</a>
+
+        <div class="search-box" style="margin-top: 20px;">
+            <img src="img/search.png" alt="Suche" width="30px">
+            <input type="text" placeholder="Nach Mitgliedern suchen" id="searchUser" onkeyup="displayUsersToChangeAdminByUsername(this.value)">
+        </div>
+
+        <table id="adminTable" style="width: 90%; margin: auto;">
+            <tr>
+                <th style="width: 10%;"></th>
+                <th style="width: 70%;"></th>
+                <th style="width: 10%;"></th>
+            </tr>    
+        </table>
+
+        <button class="accountButton" style="width: 90%; margin-top: 20px;" onclick="saveAdmin()">Änderungen Speichern</button>
+    </div>
+
+    <footer id="footer">
+        <hr class="boldHr">
+
+        <table style="width: 100%;">
+            <tr>
+                <td><img src="img/home.png" alt="Home"  class="footerImg" onclick="window.location = '/home'"></td>
+                <td><img src="img/search.png" alt="Share" class="footerImg" onclick="window.location = '/search'"></td>
+                <td><img src="img/like.png" alt="Likes" class="footerImg" onclick="window.location = '/likes'"></td>
+                <td><img src="img/account.png" alt="Account" class="footerImg" onclick="window.location = '/account'"></td>
+            </tr>
+        </table>
+    </footer>
+
+    <script src="client.js"></script>
+</body>
+</html>

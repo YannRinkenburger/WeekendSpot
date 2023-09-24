@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>WIISPOT</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/minilogo.png">
+</head>
+<body onload="loadFunctions()">
+    <p id="userOutput" style="display: none;"><%= user %></p>
+    <p id="errorOutput" style="display: none;"><%= error %></p>
+
+    <header id="accountHeader">
+        <img src="/img/header.png" alt="Logo" onclick="window.location = '/home'" class="hover" style="margin-left: 5px;">
+    </header>
+
+    <div id="accountMain">
+        <h2 style="height: 20px;">Hi<span id="usernameSpan"></span>! Dein Profil</h2>
+        <hr class="boldHr">
+
+        <table style="width: 100%;" class="profileTable">
+            <tr>
+                <td style="width: 20%;"><img src="img/globe.png" alt="Globus"></td>
+                <td style="width: 70%;">Sprache</td>
+                <td style="width: 10%;" class="arrow"><img src="img/arrow.png" alt="Arrow" onclick="openView('language', 'Sprache')"></td>
+            </tr>
+        </table>
+
+        <hr class="boldHr">
+
+        <table style="width: 100%;" class="profileTable" id="accountTable1">
+            <tr>
+                <td style="width: 20%;"><img src="img/profile.png" alt="Profile"></td>
+                <td style="width: 70%;">Profil anpassen</td>
+                <td style="width: 10%;" class="arrow"><img src="img/arrow.png" alt="Arrow" onclick="openView('profile', 'Profil anpassen')"></td>
+            </tr>
+        </table>
+
+        <hr class="boldHr" id="accountHr1">
+
+        <table style="width: 100%;" class="profileTable" id="accountTable2">
+            <tr>
+                <td style="width: 20%;"><img src="img/group.png" alt="Profile"></td>
+                <td style="width: 70%;">Freundesliste</td>
+                <td style="width: 10%;" class="arrow"><img src="img/arrow.png" alt="Arrow" onclick="openView('friends', 'Freundesliste')"></td>
+            </tr>
+        </table>
+
+        <hr class="boldHr" id="accountHr2">
+
+        <table style="width: 100%;" class="profileTable">
+            <tr>
+                <td style="width: 20%;"><img src="/img/mail.png" alt="Email"></td>
+                <td style="width: 70%;">Kontakt</td>
+                <td style="width: 10%;" class="arrow"><img src="img/arrow.png" alt="Arrow" onclick="openView('contact', 'Kontakt')"></td>
+            </tr>
+        </table>
+
+        <hr class="boldHr">
+
+        <table style="width: 100%;" class="profileTable">
+            <tr>
+                <td style="width: 20%;"><img src="img/information.png" alt="Email"></td>
+                <td style="width: 70%;">App-Informationen</td>
+                <td style="width: 10%;" class="arrow"><img src="img/arrow.png" alt="Arrow" onclick="openView('info', 'App-Informationen')"></td>
+            </tr>
+        </table>
+
+        <hr class="boldHr" id="accountHr3">
+
+        <table style="width: 100%;" class="profileTable" id="accountTable3">
+            <tr>
+                <td style="width: 20%;"><img src="img/delete.png" alt="Email"></td>
+                <td style="width: 70%;">Konto löschen</td>
+                <td style="width: 10%;" class="arrow"><img src="img/arrow.png" alt="Arrow" onclick="openView('deleteData', 'Konto löschen')"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="accountView" style="display: none;">
+        <h2 id="viewHeadline" style="height: 20px; margin-left: 10px;"></h2>
+        <span class="close" onclick="closeView()" style="margin-top: -45px;">&times;</span>
+
+        <hr class="boldHr">
+
+        <div id="language" style="display: none; margin: 5px">
+            <p>Sorry. An diesem Feature arbeiten wir gerade noch.</p>
+        </div>
+
+        <div id="profile" style="display: none; margin: 5px;">
+            <p>Hier können Sie Ihre Profilinformationen bearbeiten. Bitte speichern Sie diese Änderungen ab, sonst können die neu angegebenene Daten nicht verarbeitet werden. </p>
+
+            <form action="/editProfile" method="post" autocomplete="off">
+                <div class="formInput">
+                    <h4>Vorname</h4>
+                    <input id="firstnameEditInput" type="text" name="firstname">
+                </div>
+                 
+                <div class="formInput">
+                    <h4>Nachname</h4>
+                    <input id="lastnameEditInput" type="text" name="lastname" >
+                </div>
+
+                <div class="formInput">
+                    <h4>Username</h4>
+                    <input id="usernameEditInput" type="text" name="username">
+                </div>
+
+                <div class="formInput">
+                    <h4>E-Mail</h4>
+                    <input id="emailEditInput" type="email" name="email">
+                </div>
+
+                <div class="formInput">
+                    <h4>Passwort</h4>
+                    <input id="passwordEditInput" type="password" name="password">
+                </div>
+
+                <p class="error" id="editUserError"></p>
+
+                <button class="formButton1">Änderungen speichern</button>
+            </form>
+        </div>
+
+        <div id="contact" style="display: none; margin: 5px">
+            <img src="img/large_email.png" alt="Mail" style="display: block; margin: auto; margin-top: 30px;">
+            <h3>Kontakt</h3>
+            <p>Wenn du Fragen, Anregungen, oder sonst was hast, schreib uns über diese E-Mail-Adresse:</p>
+            <p class="email" onclick="location.href='mailto:weekendspotde@gmail.com'">weekendspotde@gmail.com</p>
+            <h3>Unangemessene Inhalte melden</h3>
+            <p>Wenn du unangemessenen Inhalte melden möchtest, schreib uns über die folgende E-Mail-Adresse. Bitte gib die Informationen zu dem unangemessenen Inhalt so konkrekt wie möglich an.</p>
+            <p class="email" onclick="location.href='mailto:weekendspotde.melden@gmail.com?Subject=Inhalt melden'">weekendspotde.melden@gmail.com</p>
+        </div>
+
+        <div id="info" style="display: none; margin: 5px">
+            <p style="text-align: center;">App Version: 0.1.0</p>
+
+            <p>Liebe Nutzer, <br><br>
+                
+                es ist mir wichtig, euch darüber zu informieren, dass unsere Webseite derzeit noch in der Entwicklungsphase ist. 
+                
+                In dieser Phase der Weiterentwicklung kann es jedoch zu vereinzelten Fehlern und Unregelmäßigkeiten kommen. Wir bitten euch um Verständnis und möchten euch versichern, dass wir diese Probleme schnellstmöglich beheben werden. Euer Feedback und eure Unterstützung sind für uns von unschätzbarem Wert, um unsere Webseite zu verbessern.
+                
+                Daher möchten wir euch bitten, uns bei jeglichen Fehlern, Problemen oder Verbesserungsvorschlägen zu kontaktieren. 
+                
+                Nochmals vielen Dank für eure Geduld und euer Verständnis während unserer Entwicklungsphase.<br><br>
+                
+                Mit herzlichen Grüßen, <br><br>
+                
+                Yann Rinkenburger <br>
+                CEO, WIISPOT</p>
+
+            <h3 style="margin-top: 60px;">Impressum</h3>
+            <strong>Herausgeber und Anbieter</strong><br>
+            Yann Rinkenburger <br> 
+            Mothariweg 5<br> 
+            88697 Bermatingen <br> 
+            E-Mail: weekendspotde@gmail.com<br><br>
+            <strong>1. Haftung für Links</strong><br><br>
+            Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.<br><br>
+            <strong>2. Urheberrecht</strong><br><br>
+            Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.<br><br>
+            <strong>3. Datenschutz</strong><br><br>
+            Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder eMail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben. <br>
+            Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich. <br>
+            Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.<br>
+            <br> 
+        </div>
+
+        <div id="deleteData" style="display: none; margin: 5px">
+            <p>Möchten sie Ihre Daten (Likes, Einstellungen, ...) und Ihr Profil wirklich löschen? Diese Aktion kann NICHT rückgängig gemacht werden!</p>
+
+            <form action="/deleteAccount" method="post" autocomplete="off">
+                <input type="text" name="username" id="deleteAccountInput" readonly style="display: none;">
+
+                <button class="accountButton" style="margin-top: 40px; font-size: 18px;" onclick="deleteData()">Konto löschen</button>
+            </form>
+        </div>
+
+        <div id="friends" style=" display: none; margin-top: 20px;">
+            <form action="/friendlist" method="get">
+                <input type="text" name="username" id="friendlistInput" readonly style="display: none;">
+                <button id="friendlistButton">Klick</button>
+            </form>
+        </div>
+    </div>
+
+    <footer id="accountFooter">
+        <button class="accountButton" id="loginButton" style="width: 90%;" onclick="openLogin()">Anmelden</button>
+
+        <form action="/logOut" method="post" autocomplete="off">
+            <button class="accountButton" id="logoutButton" style="display: none; background: #121212; color: #3eb1be; border: 2px solid #3eb1be; width: 90%;">Abmelden</button>
+        </form>
+        
+
+        <hr class="boldHr">
+
+        <table style="width: 100%;">
+            <tr>
+                <td><img src="img/home.png" alt="Home" class="footerImg" onclick="window.location = '/home'"></td>
+                <td><img src="img/search.png" alt="Share" class="footerImg" onclick="window.location = '/search'"></td>
+                <td><img src="img/like.png" alt="Likes" class="footerImg" onclick="window.location = '/likes'"></td>
+                <td><img src="img/account.png" alt="Account" class="footerImg" style="background: #3eb1be;"></td>
+            </tr>
+        </table>
+    </footer>
+
+    <script src="client.js"></script>
+</body>
+</html>

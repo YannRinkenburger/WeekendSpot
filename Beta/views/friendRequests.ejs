@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>WIISPOT</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/minilogo.png">
+</head>
+<body onload="loadRequests()">
+    <p id="userOutput" style="display: none;"><%= user %></p>
+    <p id="requestsOutput" style="display: none;"><%= requests %></p>
+
+    <div>
+        <h2 style="height: 20px; margin-left: 10px;">Follower-Anfragen</h2>
+        <span class="close" onclick="window.location = '/home'" style="margin: 10px; font-size: 40px; margin-top: -50px;">&times;</span>
+
+        <hr class="boldHr">
+    </div>
+
+    <div id="main">
+        <div class="info">
+            <center><img src="img/add_user_big.png" alt="Add User" style="margin-top: 30px;"></center>
+            <p style="text-align: center; margin: 20px;">Wenn dir Personen folgen möchten, siehst du hier ihre Anfragen.</p>
+        </div>
+
+        <table id="requestTable" style="width: 100%;">
+            <tr>
+                <th style="width: 10%;"></th>
+                <th style="width: 66%;"></th>
+                <th style="width: 12%;"></th>
+                <th style="width: 12%;"></th>
+            </tr>
+        </table>
+    </div>
+
+
+    <footer id="footer">
+        <hr class="boldHr">
+
+        <table style="width: 100%;">
+            <tr>
+                <td><img src="img/home.png" alt="Home"  class="footerImg" style="background: #3eb1be;"></td>
+                <td><img src="img/search.png" alt="Share" class="footerImg" onclick="window.location = '/search'"></td>
+                <td><img src="img/like.png" alt="Likes" class="footerImg" onclick="window.location = '/likes'"></td>
+                <td><img src="img/account.png" alt="Account" class="footerImg" onclick="window.location = '/account'"></td>
+            </tr>
+        </table>
+    </footer>
+
+    <script src="client.js"></script>
+</body>
+</html>

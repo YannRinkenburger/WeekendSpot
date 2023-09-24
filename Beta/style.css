@@ -1,0 +1,1127 @@
+html{
+    font-family: Calibri;
+    color: white;
+    margin: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    scroll-behavior: smooth;
+    background-color: #121212;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: -10px;
+}
+
+@media only screen and (min-width: 900px) {
+    body {
+        width: 50%;
+        margin: auto;
+    }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.noselect{
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+.rotateimg180 {
+    -webkit-transform:rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+input[type=number]{
+    -moz-appearance: textfield;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+button{
+    cursor: pointer;
+}
+
+input{
+    background: transparent;
+    color: white;
+}
+
+.hover{
+    cursor: pointer;
+}
+
+.flexBox{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+hr{
+    border: 0 none;
+    height: 1px;
+    background: white;
+    margin-top: -2px;
+}
+
+header{
+    position: sticky;
+    top: 0;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: -10px;
+    padding-top: 10px;
+    background: #121212;
+}
+
+footer{
+    position: sticky;
+    bottom: 0;
+    padding-bottom: 10px;
+    background-color: #121212;
+    margin-top: auto;
+}
+
+footer table td{
+    width: 25%;
+    text-align: center;
+}
+
+footer img{
+    border-radius: 10px;
+    padding: 5px;
+    width: 48px;
+}
+
+#top{
+    margin: 8px;
+}
+
+.top-box{
+    border: 2px solid white;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 1;
+    background: #121212;
+    width: 63%;
+    margin-top: -15px;
+}
+
+.top-box img{
+    vertical-align: bottom;
+}
+
+.top-box input{
+    font-size: 16px;
+    height: 30px;
+    width: 80%;
+}
+
+input{
+    border: none;
+    outline: none;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+h1{
+    font-size: 50px;
+    margin-bottom: -10px;
+    margin-top: -20px;
+}
+
+h4{
+    height: 0px;
+}
+
+.modal {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+  
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    border-radius: 20px;
+}
+
+.close {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    padding-right: 10px;
+}
+  
+.close:hover{
+    color: #aaa;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.formInput{
+    border: 1px solid white;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.formInput h4{
+    height: 2px;
+    font-size: 14px;
+    color: white;
+    margin-top: 0px;
+}
+
+.miniFormInput{
+    border: 1px solid white;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 8px;
+    width: 45%;
+}
+
+.miniFormInput h4{
+    height: 2px;
+    font-size: 14px;
+    color: #808080;
+    margin-top: 0px;
+}
+
+.formButton1{
+    background: #3eb1be;
+    border: none;
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+    color: white;
+    margin-top: 10px;
+}
+
+.formButton2{
+    background: transparent;
+    border: 2px solid #3eb1be;
+    color: #3eb1be;
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+#forgetPassword{
+    font-size: 17px;
+    color: #3eb1be;
+    font-weight: bold;
+}
+
+.error{
+    color: red;
+    font-weight: bold;
+}
+
+.planDiv{
+    border: 1px solid #e1e1e1;
+    border-radius: 20px;
+    background: #e1e1e1;
+    padding-left: 30px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    width: 30%;
+    max-width: 30%;
+}
+
+.planDiv .textDiv{
+    float: right;
+    margin-right: 50%;
+    margin-top: -10px;
+}
+
+.buttonsDiv{
+    float: right;
+    margin-top: -7%;
+    margin-right: 5%;
+}
+
+.buttonsDiv img{
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+#planMenu a{
+    display: inline-block;
+    margin: 10px;
+    width: 100px;
+    text-align: center;
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#mainPlanMenu{
+    border: 1px solid #e1e1e1;
+    margin-left: 5%;
+    margin-right: 5%;
+    border-radius: 20px;
+    padding: 1%;
+}
+
+.cameraLabel{
+    border: 1px solid #808080;
+    padding: 5px;
+    border-radius: 10px;
+    color: #808080;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#logOutModal form{
+    padding-bottom: 25px;
+}
+
+#logOutModal .formButton1{
+    width: 200px;
+    float: left;
+    margin-top: -5px;
+}
+
+#logOutModal .formButton2{
+    width: 200px;
+    float: right;
+    margin-top: -45px;
+}
+
+#deletePlanModal .formButton1{
+    width: 200px;
+    float: left;
+    margin-top: -10px;
+}
+
+#deletePlanModal .formButton2{
+    width: 200px;
+    float: right;
+    margin-top: -35px;
+}
+
+#uploadPlanModal .formButton1{
+    width: 200px;
+    float: left;
+    margin-top: -10px;
+}
+
+#uploadPlanModal .formButton2{
+    width: 200px;
+    float: right;
+    margin-top: -35px;
+}
+
+#editUploadedPlanModal .formButton1{
+    width: 200px;
+    float: left;
+    margin-top: -10px;
+}
+
+#editUploadedPlanModal .formButton2{
+    width: 200px;
+    float: right;
+    margin-top: -35px;
+}
+
+.flex-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#browseDiv{
+    margin-top: 2%;
+    width: 100%;
+}
+
+#homeDiv{
+    margin-top: 2%;
+    width: 100%;
+}
+
+.boldHr{
+    height: 2px;
+    background: white;
+    width: 100%;
+}
+
+.blackHr{
+    background-color: white;
+    width: 100%;
+}
+
+img:hover{
+    cursor: pointer;
+}
+
+.list{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.list div{
+    border: 2px solid white;
+    padding: 5px;
+    border-radius: 30px;
+    font-size: 18px;
+    margin: 5px;
+    cursor: pointer;
+    width: fit-content;
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+#main{
+    margin: 10px;
+    margin-top: -15px;
+}
+
+.event-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: #303030;
+    margin-top: 10px;
+    border-radius: 20px;
+    box-shadow: 5px 10px #202020;
+    margin-bottom: 10px;
+}
+  
+.left-section {
+    width: 10%;
+    padding: 20px;
+    padding-top: 15px;
+}
+
+.right-section {
+    width: 90%;
+    padding: 10px;
+    padding-top: 0px;
+}
+  
+.date {
+    font-size: 32px;
+    font-weight: bold;
+}
+  
+.month {
+    font-size: 18px;
+    font-weight: bold;
+}
+  
+.age-restriction {
+    font-size: 16px;
+    border: 2px solid #121212;
+    color: #121212;
+    border-radius: 50px;
+    padding: 5px;
+    margin-top: 20px;
+    font-weight: bold;
+    background: #3EB1BE;
+    width: fit-content;
+}
+  
+.title {
+    font-size: 20px;
+    font-weight: bold;
+}
+  
+.time {
+    font-size: 18px;
+}
+  
+.location {
+    font-size: 16px;
+}
+  
+.vertical-line {
+    border: none;
+    border-left: 1px solid white;
+    height: 80%;
+    margin-top: 15px;
+}
+
+.interactionDiv{
+    float: right;
+}
+
+.interactionDiv img{
+    margin-left: 10px;
+}
+
+.profileTable td{
+    font-size: 22px;
+}
+
+.arrow{
+    cursor: pointer;
+}
+
+.arrow img{
+    margin-left: -10px;
+}
+
+.Button{
+    margin: auto;
+    display: block;
+    font-size: 20px;
+    border: 1px solid #3eb1be;
+    border-radius: 30px;
+    padding: 8px;
+    padding-left: 30%;
+    padding-right: 30%;
+    margin-bottom: 20px;
+    background: #3eb1be;
+    color: white;
+}
+
+.miniText{
+    height: 0;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+#shareDiv{
+    position: sticky;
+    bottom: 0;
+    margin: -10px;
+    margin-top: auto;
+    margin-bottom: 0px;
+    max-height: 400px;
+}
+
+#shareContent{
+    background: #202020;
+    padding-bottom: 10px;
+}
+
+.midClose{
+    border-radius: 30px;
+    font-size: 40px;
+    text-align: center;
+    margin: auto;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.midClose span{
+    border: 2px solid white;
+    border-radius: 40px;
+    width: 50px;
+    display: inline-block;
+    cursor: pointer;
+    background: #202020;
+}
+
+#filterFooter{
+    margin-bottom: 20px;
+    font-size: 20px;
+    margin-left: 5%;
+    font-weight: bold;
+}
+
+#filterFooter button{
+    background: #3eb1be;
+    border: 1px solid #3eb1be;
+    border-radius: 10px;
+    color: white;
+    padding: 5px;
+    font-size: 20px;
+    margin-left: 5%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.postedDiv{
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    margin-top: 20px;
+    width: 100%;
+    box-shadow: 5px 10px #202020;
+    background: #303030;
+}
+
+.postedDiv .event-container{
+    box-shadow: none;
+    background: none;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.email{
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.accountButton{
+    margin: auto;
+    display: block;
+    font-size: 20px;
+    border: 1px solid #3eb1be;
+    border-radius: 30px;
+    padding: 8px;
+    margin-bottom: 20px;
+    background: #3eb1be;
+    color: #121212;
+    width: 100%;
+}
+
+#returnFilter{
+    cursor: pointer;
+    height: 5px;
+    font-weight: bold;
+    float: right;
+}
+
+#eventViewContent{
+    margin: 10px;
+    width: 90%;
+    background: #303030;
+    border-radius: 20px;
+    box-shadow: 5px 10px #202020;
+    padding: 10px;
+    padding-bottom: 40px;
+}
+
+#eventViewDiv{
+    margin-top: -5px;
+}
+
+#eventViewDiv p{
+    height: 5px;
+    font-size: 18px;
+}
+
+#eventView h3{
+    margin: 10px;
+    margin-top: 20px;
+    text-decoration: underline;
+}
+
+ul{
+    font-style: italic;
+    font-size: 15px;
+}
+
+.eventText{
+    margin: 10px;
+    font-size: 18px;
+}
+
+.eventFoldOut{
+    font-size: 25px;
+    border: 1px solid #3eb1be;
+    width: 90%;
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.eventFoldOut > table{
+    cursor: pointer;
+    width: 100%;
+    background: #3eb1be;
+    color: white;
+    border-radius: 7px;
+}
+
+.eventTableContent{
+    font-size: 15px;
+    margin: auto;
+    width: 90%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#eventViewTickets{
+    color: white;
+    width: 75%;
+    margin: auto;
+    font-size: 15px;
+}
+
+#eventViewTickets td{
+    width: 50%;
+    text-align: center;
+}
+
+#eventViewLinks{
+    color: white;
+    width: 75%;
+    margin: auto;
+    font-size: 15px;
+}
+
+#eventViewLinks td{
+    width: 50%;
+    text-align: center;
+}
+
+#commentCounter{
+    text-align: center;
+    margin: 5px;
+    font-weight: bold;
+}
+  
+.comment{
+    margin-bottom: 10px;
+    border: 1px solid #303030;
+    padding: 10px;
+    padding-bottom: 30px;
+    border-radius: 20px;
+    background: #303030;
+}
+  
+.user-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+  
+.user-name{
+    cursor: pointer;
+    font-size: 16px;
+}
+  
+.comment-date{
+    font-size: 12px;
+    color: #3eb1be;
+    font-weight: bold;
+}
+  
+.comment-text{
+    margin-top: 10px;
+    font-size: 14px;
+}
+  
+.comment-actions{
+    float: right;
+}
+
+.comment-actions img{
+    width: 24px;
+    margin-left: 25px;
+}
+
+#commentFormTable{
+    margin-bottom: 10px;
+    border: 1px solid #e6e6e6;
+    border-radius: 20px;
+    background: #303030;
+    width: 100%;
+}
+
+#commentFormTable button{
+    background: none;
+    border: none;
+}
+
+#commentFormTable input{
+    font-size: 16px;
+    width: 95%;
+    margin-left: 10px;
+}
+
+.realDayDiv{
+    width: 14%;
+    text-align: center;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.dayDiv{
+    width: 14%;
+    text-align: center;
+}
+
+.dayDiv h3{
+    color: #3eb1be;
+}
+
+.infoPoint{
+    font-size: 70px;
+    height: 0px;
+    margin-top: -55px;
+    color: transparent;
+    margin-bottom: 50px;
+}
+
+#yearText{
+    text-align: center;
+    margin: -10px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    font-weight: bold;
+}
+
+#browseDivHead{
+    background: #3eb1be;
+    padding: 1px;
+    border-radius: 20px;
+    color: white;
+    border: 1px solid #3eb1be;
+    margin-top: 20px;
+}
+
+#eventViewTop{
+    position: sticky;
+    top: 0px;
+    background: #121212;
+    padding-top: 1px;
+}
+
+#profileTop{
+    position: sticky;
+    top: 0px;
+    background: #121212;
+}
+
+.searchUser table{
+    width: 100%;
+    margin-top: -25px;
+}
+
+.searchUser table img{
+    margin-top: 20px;
+    margin-left: 5px;
+}
+
+.participationUser table{
+    width: 90%;
+    margin: auto;
+    margin-top: -20px;
+}
+
+.participationUser table img{
+    margin-top: 20px;
+    margin-left: 5px;
+}
+
+.requestProfile{
+    width: 24px;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+#tagname{
+    margin-top: -20px;
+}
+
+.followButton{
+    font-size: 16px;
+    border-radius: 30px;
+    padding: 8px;
+    color: white;
+    margin-right: 10px;
+    background-color: #3EB1BE;
+    border: 1px solid #3EB1BE;
+}
+
+.search-box{
+    border: 2px solid white;
+    border-radius: 10px;
+    background: #121212;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.search-box input{
+    font-size: 16px;
+    height: 30px;
+    margin-left: 5px;
+    width: 80%;
+}
+
+.backButton{
+    background: none;
+    border: none;
+    float: left;
+    margin-top: 22px;
+}
+
+.headline{
+    height: 20px;
+    margin-left: 40px;
+}
+
+.groupHeadText{
+    margin-left: 15px;
+    font-size: 23px;
+    margin-top: 10px;
+}
+
+.groupMiniText{
+    margin-left: 15px;
+    font-weight: normal;
+    font-size: 15px;
+    margin-top: -20px;
+}
+
+.leftMessage{
+    float: left;
+    background-color: #303030;
+    border-radius: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    max-width: 60%;
+    min-width: 15%;
+    position: relative;
+    margin-left: 5px;
+}
+
+.leftMessage::after {
+    content: " ";
+    position: absolute;
+    left: -10px;
+    top: 15px;
+    border-top: 10px solid transparent;
+    border-right: 10px solid #303030;
+    border-left: none;
+    border-bottom: 10px solid transparent;
+}
+
+.rightMessage{
+    float: right;
+    background-color: #3EB1BE;
+    border-radius: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    max-width: 60%;
+    min-width: 15%;
+    position: relative;
+    margin-right: 5px;
+}
+
+.rightMessage::after {
+    content: " ";
+    position: absolute;
+    right: -10px;
+    top: 15px;
+    border-top: 10px solid transparent;
+    border-right: none;
+    border-left: 10px solid #3eb1be;
+    border-bottom: 10px solid transparent;
+}
+
+.sharedEvent{
+    cursor: pointer;
+    color: #3eb1be;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    border: 2px solid #3eb1be;
+    border-radius: 15px;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.timeEventMessage{
+    font-size: 18px;
+}
+
+.usernameMessage{
+    margin-top: 2px;
+    font-size: 14px;
+    font-weight: bold;
+    padding-top: 4px;
+    text-align: left;
+}
+
+.userinfoMessage{
+    text-align: center;
+    color: #808080;
+}
+
+.textMessage{
+    font-size: 18px;
+    margin-top: -2px;
+    height: fit-content;
+}
+
+.timeMessage{
+    text-align: right;
+    color: #717171;
+    padding-bottom: 4px;
+}
+
+.message{
+    width: 100%;
+    display: inline-block;
+}
+
+#participationCounter{
+    text-align: center;
+    margin: 5px;
+    font-weight: bold;
+    color: #3eb1be;
+}
+
+#friendsCounter{
+    text-align: center;
+    font-weight: bold;
+    color: #3eb1be;
+}
+
+#usersCounter{
+    text-align: center;
+    font-weight: bold;
+    color: #3eb1be;
+}
+
+#groupInfoTable{
+    width: 75%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+#groupInfoTable td{
+    text-align: center;
+    width: 30%;
+}
+
+.editGroupTable{
+    width: 80%;
+    border: 2px solid white;
+    padding: 5px;
+    text-align: center;
+    font-size: 20px;
+    margin: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.editGroupHeadline{
+    font-size: 25px;
+    margin-left: 20px;
+}
+
+#userCounter{
+    text-align: center;
+    font-weight: bold;
+    color: #3eb1be;
+}
+
+input[type="radio"] {
+    -ms-transform: scale(1.25); /* IE 9 */
+    -webkit-transform: scale(1.25); /* Chrome, Safari, Opera */
+    transform: scale(1.25);
+}
+
+.eventEditInfo{
+    width: 80%;
+    border: 2px solid #4CFF00;
+    text-align: center;
+    font-size: 20px;
+    margin: auto;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    color: #4CFF00;
+}
+
+#calendar{
+    background: #303030;
+    border-radius: 20px;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.authInput{
+    background-color: #3EB1BE;
+    padding: 10px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    border-radius: 20px;
+    margin: 5px;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+}
+
+.commentCounter{
+    font-size: 20px;
+    margin-right: -20px;
+    margin-left: 20px;
+    display: inline-block;
+    vertical-align: 5px;
+}
+
+#commentText{
+    font-size: 18px;
+}
+
+#emojiList{
+    display: flex;
+    width: 95%;
+    flex-wrap: wrap;
+    overflow-y: scroll; 
+    max-height: 180px;
+    margin: auto;
+}
+
+#emojiList div{
+    width: 9%;
+    text-align: center;
+    font-size: 25px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+#emojiPicker{
+    background-color: #303030;
+    width: 90%;
+    margin: auto;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    border: 1px solid #e6e6e6;
+}

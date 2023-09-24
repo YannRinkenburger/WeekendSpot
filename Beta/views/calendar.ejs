@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>WIISPOT</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/minilogo.png">
+</head>
+<body onload="loadCalendar()">
+    <p id="userOutput" style="display: none;"><%= user %></p>
+    <p id="eventsOutput" style="display: none;"><%= events %></p>
+    <p id="monthOutput" style="display: none;"><%= month %></p>
+    <p id="yearOutput" style="display: none;"><%= year %></p>
+    <p id="groupsOutput" style="display: none;"><%= groups %></p>
+    <p id="postsOutput" style="display: none;"><%= posts %></p>
+
+    <div id="top" style="margin-top: 10px;">
+        <table style="width: 100%;">
+            <tr>
+                <th style="width: 20%;">
+                    <form action="/monthDown" method="post">
+                        <button style="background: none; border: none;"><img src="img/arrow.png" alt="Arrow" class="rotateimg180"></button>
+                    </form>
+                </th>
+                <th style="width: 60%; font-size: 30px;" id="monthText"></th>
+                <th style="width: 20%;">
+                    <form action="/monthUp" method="post">
+                        <button style="background: none; border: none;"><img src="img/arrow.png" alt="Arrow"></button>
+                    </form>
+                </th>
+            </tr>
+        </table>
+
+        <p id="yearText"></p>
+
+        <hr class="boldHr" style="margin-top: 10px;">
+    </div>
+
+    <div id="main">
+        <div id="calendar" class="flex-container">
+            <div class="dayDiv"><h3>MO</h3></div>
+            <div class="dayDiv"><h3>DI</h3></div>
+            <div class="dayDiv"><h3>MI</h3></div>
+            <div class="dayDiv"><h3>DO</h3></div>
+            <div class="dayDiv"><h3>FR</h3></div>
+            <div class="dayDiv"><h3>SA</h3></div>
+            <div class="dayDiv"><h3>SO</h3></div>
+
+            <div id="calendarArea" class="flex-container" style="width: 100%;"></div>
+        </div>
+
+        <div id="browseDivHead" style="display: none;">
+           <h3 id="browseDivHeader" style="margin-left: 10px;"></h3>
+
+            <div class="close" id="closeCalendarBrowse" style="margin-top: -55px; margin-right: 10px; font-size: 40px; color: white;">
+                <span id="closeCalendarBrowseButton">&times;</span>
+            </div> 
+        </div>
+
+        <div id="browseDiv" class="flex-container"></div>
+    </div>
+
+    <div id="shareDiv" style="display: none;">
+        <div class="midClose">
+            <span onclick="closeShareDiv()">&times;</span>
+        </div>
+
+        <div id="shareContent">
+            <hr class="boldHr" style="margin-top: -10px;">
+
+            <div class="top-box" style="width: 80%; margin: auto; position: unset; background: #202020;">
+                <img src="img/search.png" alt="Suche" width="30px">
+                <input type="text" placeholder="Nach Chat suchen" onkeyup="searchGroupByName(this.value)">
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <hr class="boldHr">
+
+        <table style="width: 100%;">
+            <tr>
+                <td><img src="img/home.png" alt="Home" class="footerImg" onclick="window.location = '/home'"></td>
+                <td><img src="img/search.png" alt="Share" class="footerImg" onclick="window.location = '/search'" style="background: #3eb1be;"></td>
+                <td><img src="img/like.png" alt="Likes" class="footerImg" onclick="window.location = '/likes'"></td>
+                <td><img src="img/account.png" alt="Account" class="footerImg" onclick="window.location = '/account'"></td>
+            </tr>
+        </table>
+    </footer>
+
+    <script src="client.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>WIISPOT</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/minilogo.png">
+</head>
+<body style="text-align: center;">
+    <h2 style="color: #3eb1be; margin-top: 80px;">E-Mail verifizieren</h2>
+    <h4>Geben Sie hier den Code ein, den Sie über ihre angegebene E-Mail erhalten haben.</h4>
+
+    <table style="width: 80%; margin: auto; margin-top: 40px;">
+        <tr>
+            <td style="width: 16%;"><input type="text" onkeyup="authInput(0, this.value, event.key)" class="authInput" autofocus autocomplete="off" size="1" maxlength="1"></td>
+            <td style="width: 16%;"><input type="text" onkeyup="authInput(1, this.value, event.key)" class="authInput" autocomplete="off" size="1" maxlength="1"></td>
+            <td style="width: 16%;"><input type="text" onkeyup="authInput(2, this.value, event.key)" class="authInput" autocomplete="off" size="1" maxlength="1"></td>
+            <td style="width: 16%;"><input type="text" onkeyup="authInput(3, this.value, event.key)" class="authInput" autocomplete="off" size="1" maxlength="1"></td>
+            <td style="width: 16%;"><input type="text" onkeyup="authInput(4, this.value, event.key)" class="authInput" autocomplete="off" size="1" maxlength="1"></td>
+        </tr>
+    </table>
+    
+    <form action="/authenticationDone" method="post" style="display: none;">
+        <input type="text" name="codeInput" id="codeInput" readonly>
+        <button id="codeButton"></button>
+    </form>
+
+    <script src="client.js"></script>
+</body>
+</html>
